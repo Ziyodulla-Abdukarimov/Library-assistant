@@ -1,0 +1,44 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row m-4 text-center">
+        <b class="fs-4">Xodimni O'chirish</b>
+    </div>
+    <div class="row mt-5">
+      <table class="table table-light table-hover">
+            <thead>
+              <tr>
+                <th scope="col">T/R</th>
+                <th scope="col">Familya</th>
+                <th scope="col">Ism</th>
+                <th scope="col">Xodim ID</th>
+                <th scope="col">Telefon raqami</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for students in staff %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ students.admin.first_name }}</td>
+                <td>{{ students.admin.last_name }}</td>
+                <td>{{ students.admin.username }}</td>
+                <td>{{ students.address }}</td>
+                <td><button type="submit" class="btn btn-danger float-end"><a style="text-decoration:none; color:white;" href="delemployee/{{ students.id }}" onclick="return confirm('Ishonchiz komilmi?')"><i class="fa fa-trash-o "></i></a></button></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+<div class="col-12 mt-5 p-4">
+
+</div>
+<script>
+<a class="confirm-delete">Delete</a>
+    $(document).on('click', '.confirm-delete', function(){
+      return confirm('Haqiqatdan ham o'chirmoqchimisiz?');
+  })
+</script>
+{% endblock content %}

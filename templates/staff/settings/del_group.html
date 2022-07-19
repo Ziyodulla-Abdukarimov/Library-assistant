@@ -1,0 +1,43 @@
+{% extends 'staff/staff.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12 mt-4">
+    <table class="table table-light table-hover">
+      <h4 class="mt-5">Mavjud guruhlar</h4>
+      <hr>
+      <thead>
+        <tr>
+          <th>T/r</th>
+          <th>Guruh</th>
+          <th>Talabalar soni</th>
+          <th>Qo'shilgan vaqti</th>
+          <th>O'chirish</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for group in groups %}
+        <tr>
+          <th scope="col">{{ forloop.counter }}</th>
+          <th scope="col">{{ group.number }}</th>
+          <th scope="col">{{ group.students_set.all.count }}</th>
+          <th></th>
+          <th>
+            <button class="btn btn-danger btn-xs"><a style="text-decoration:none; color:white;"
+                href="del_group/{{ group.id }}" onclick="return confirm('Ishonchiz komilmi?')"><i
+                  class="fa fa-trash-o"></i> </a></button>
+          </th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="col-12 mt-5 p-5"></div>
+<script>
+  <a class="confirm-delete">Delete</a>
+  $(document).on('click', '.confirm-delete', function () {
+    return confirm('Haqiqatdan ham o'chirmoqchimisiz ? ');
+})
+</script>
+{% endblock content %}

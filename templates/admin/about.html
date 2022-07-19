@@ -1,0 +1,100 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'card.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="row d-flex justify-content-evenly">
+    <div class="mb-5 text-center mt-5">
+        <a class="fs-1">Sirius</a> <a class="fs-1" style="color:#F76C5E;">Group</a>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="border-radius">
+            <div class="our-team first-card small-card">
+                <div class="team_img">
+                    <img src="{% static './our team/Elomon_Nurullaev.jpg' %}" alt="Elomon Nurullaev">
+                    <ul class="social">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="team-content">
+                    <h3 class="title">ELOMON NURULLAEV</h3>
+                    <span class="post">Project Manager</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 col-sm-12">
+        <div class="our-team second-card small-card">
+            <div class="team_img">
+                <img src="{% static './our team/Ziyodulla_Abdukarimov.jpg' %}" alt="Ziyodulla Abdukarimov">
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="team-content">
+                <h3 class="title">ZIYODULLA ABDUKARIMOV</h3>
+                <span class="post">Full-stack developer</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 col-sm-12">
+        <div class="our-team third-card small-card">
+            <div class="team_img">
+                <img src="{% static './our team/Kamron_Raximov.jpg' %}" alt="Kamron Raximov">
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="team-content">
+                <h3 class="title">KAMRON RAXIMOV</h3>
+                <span class="post">Frontend developer</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 col-sm-12 mt-5 mb-5 small-card2">
+        <div class="our-team first-card small-card">
+            <div class="team_img">
+                <img src="{% static './our team/jamshidbek_Ollanazarov.jpg' %}" alt="Jamshidbek Ollanazarov">
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="team-content">
+                <h3 class="title">JAMSHIDBEK OLLANAZAROV</h3>
+                <span class="post">Beckend developer</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 col-sm-12 mt-5 mb-5">
+        <div class="our-team second-card small-card">
+            <div class="team_img">
+                <img src="{% static './our team/Sulaymon_Saidmuratov.jpg' %}" alt="Sulaymon Saidmuratov">
+                <ul class="social">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="team-content">
+                <h3 class="title">SULAYMON SAIDMURATOV</h3>
+                <span class="post"> Designer</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

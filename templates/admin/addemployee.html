@@ -1,0 +1,60 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+<div class="container">
+    <div class="text-center mt-5">
+        <b class="fs-4">Xodim qo'shish</b>
+    </div>
+        <form method="post" class="row mt-4">
+          {% csrf_token %}
+            <div class="col-4">
+                <input name="first_name"  type="text" class="form-control rounded" placeholder="Familya">
+            </div>
+            <div class="col-4">
+                <input name="last_name" type="text" class="col-4 form-control rounded" placeholder="Ism">
+            </div>
+            <div class="col-4">
+                <input name="username" type="text" class="col-4 form-control rounded" placeholder="username">
+            </div>
+            <div class="col-4 mt-3">
+                <input name="password" type="text" class="col-4 form-control rounded" placeholder="Parol">
+            </div>
+            <div class="col-4 mt-3">
+                <input name="phone_number" type="text" class="form-control rounded" placeholder="Telefon raqami">
+            </div>
+            <div class="col-4 mt-3">
+                <button type="submit" class="btn w-100 btn-primary rounded">Qo'shish</button>
+            </div>
+        </form>
+            {% for messages in messages %}
+            <div class="alert alert-danger mt-2" role="alert">
+                    {{ messages }}
+            </div>
+            {% endfor %}
+    <div class="row mt-5">
+        <table class="table table-light table-hover">
+            <thead class="table-dark border border-dark border-1">
+              <tr>
+                <th scope="col">T/R</th>
+                <th scope="col">Familya</th>
+                <th scope="col">Ism</th>
+                <th scope="col">Xodim ID</th>
+                <th scope="col">Telefon raqami</th>
+              </tr>
+            </thead>
+            <tbody class="border border-1">
+            {% for student in staff %}
+              <tr>
+                <th scope="col">{{ forloop.counter }}</th>
+                <th scope="col">{{ student.admin.first_name }}</th>
+                <th scope="col">{{ student.admin.last_name }}</th>
+                <th scope="col">{{ student.admin.username }}</th>
+                <th scope="col">{{ student.address }}</th>
+              </tr>
+            {% endfor %}
+          </table>
+    </div>
+</div>
+<div class="col-12 mt-5 p-4">
+
+</div>
+{% endblock content %}

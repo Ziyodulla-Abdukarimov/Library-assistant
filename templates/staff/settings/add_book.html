@@ -1,0 +1,79 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="form">
+      <h4 class="mt-5">Kitob qo'shish</h4>
+      <form method="post" class="form-inline mt-4" role="form">
+        {% csrf_token %}
+        <div class="form-group w-25">
+          <input type="text" name="book_name" class="form-control w-100" placeholder="Китоб номи">
+        </div>
+        <div class="form-group w-25">
+          <input type="text" name="author" class="form-control w-100" placeholder="Муаллифи">
+        </div>
+        <div class="form-group w-25">
+          <input type="text" name="key" class="form-control w-100" placeholder="Инвентар рақами">
+        </div>
+        <div class="form-group w-25">
+          <input type="text" name="book_type" class="form-control w-100" placeholder="Kitob turi">
+        </div>
+        <div class="form-group w-25">
+          <input type="text" name="lang" class="form-control w-100" placeholder="Kitob tili">
+        </div>
+        <button type="submit" class="btn btn-theme w-25 mt-1">Qo'shish</button>
+      </form>
+    </div>
+  </div>
+  {% for messages in messages %}
+  <div class="col-12 alert alert-danger">
+    {{ messages }}
+  </div>
+  {% endfor %}
+
+  {% if image %}
+  <h1>Kitob QR Codi</h1>
+  <a href="data:image/png;base64,{{ image }}" download>
+      <img src="data:image/png;base64,{{ image }}">
+      <button class="btn"><i class="fa fa-download"></i>Yuklab olish</button>
+  </a>
+{% endif %}
+  <div class="col-12 mt-2 p-3">
+    <div class="col-12">
+      <div>
+        <table class="table table-light table-hover">
+          <h4>Mavjud kitoblar</h4>
+          <hr>
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">T/R</th>
+              <th scope="col">Китоб номи</th>
+              <th scope="col">Муаллифи</th>
+              <th scope="col">Инвентар рақами</th>
+              <th scope="col">Turi</th>
+              <th scope="col">Tili</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in book %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td class="hidden-phone">{{ book.book_name }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.key }}</td>
+              <td>{{ book.book_type }}</td>
+              <td>{{ book.language }}</td>
+            </tr>
+            <tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- /content-panel -->
+    </div>
+  </div>
+</div>
+<div class="p-5">
+
+</div>
+{% endblock content %}

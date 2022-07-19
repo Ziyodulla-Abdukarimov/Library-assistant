@@ -1,0 +1,48 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+<div class="container m-5"></div>
+<div class="row">
+    <form method="post">
+        {% csrf_token %}
+        <select name="group" class="form-control" onchange="this.form.submit()">
+            <option>Guruhni tanlash</option>
+            {% for group_id in group %}
+            <option value="{{ group_id.id }}">{{ group_id.number }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+<table class="table table-light table-hover">
+    <h4 class="mt-5">{{ g }} Guruh talabalari</h4>
+    <hr>
+    <thead>
+        <tr>
+            <th>T/r</th>
+            <th>FIO</th>
+            <th>Guruh</th>
+            <th>Pasport ID</th>
+            <th>Telefon raqam</th>
+            <th>Tanlash</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in member %}
+        <tr style="font-family: Arial, Helvetica, sans-serif;">
+            <th class="fw-bolder" scope="col">{{ forloop.counter }}</th>
+            <th class="fw-normal" scope="col">{{ student.FIO }}</th>
+            <th class="fw-normal" scope="col">{{ student.groups }}
+            </th>
+            <th class="fw-normal" scope="col">{{ student.passport_id }}</th>
+            <th class="fw-normal" scope="col">{{ student.phone_number }}</th>
+            <th>
+                <a href="book_in/{{ student.id }}">
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                </a>
+            </th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="m-5"></div>
+</div>
+{% endblock content %}

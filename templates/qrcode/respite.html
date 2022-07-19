@@ -1,0 +1,14 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+<div class="row m-5 p-5">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" name="respite" placeholder="Muhlatni kiriting">
+            <button type="submit" class="btn mt-3 btn-primary w-100">Berish</button>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+{% endblock content %}

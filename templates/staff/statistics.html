@@ -1,0 +1,32 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+{% load static %}
+<div class="pt-5">
+  <div class="col-12">
+    <div class="text-center p-3">
+      <b class="fs-3">Faol kitobxonlar</b>
+    </div>
+    <table class="table table-light table-hover mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">T/R</th>
+          <th scope="col">FIO</th>
+          <th>Gruhi</th>
+          <th scope="col">O'qigan kitoblar soni</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for name in statistics %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ name.FIO }}</td>
+          <td>{{ name.groups }}</td>
+          <td>{{ name.return_book_set.all.count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="mt-5 p-5"></div>
+{% endblock content %}

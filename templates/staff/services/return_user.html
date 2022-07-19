@@ -1,0 +1,67 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-3">
+            <img src="{% static '149071.png' %}" class="w-50 h-80 ms-5 mb-5" alt="...">
+        </div>
+        <div class="col-9 mt-5 ps-0 fs-4" style="font-family: sans-serif;">
+            <p>
+                <b>FIO:</b> {{ student.FIO }}<br>
+                <b>Passport ID:</b> {{ student.passport_id }}<br>
+                <b>Telefon raqami:</b> {{ student.phone_number }}
+            </p>
+        </div>
+        <div class="col-12 mt-4">
+            <!--Table START-->
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">T/R</th>
+                        <th scope="col">O'qigan kitob nomi</th>
+                        <th scope="col">Kitob raqami</th>
+                        <th scope="col">Olgan vaqti</th>
+                        <th scope="col">Bergan vaqti</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for accept_book in accept_book %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ accept_book.book_name }}</td>
+                        <td>{{ accept_book.key }}</td>
+                        <td>{{ accept_book.created }}</td>
+                        <form method="post">
+                            {% csrf_token %}
+                            <td><button class="btn btn-danger " name="idi" value="{{ accept_book.id }}" type="submit"
+                                    onclick="return confirm('Ishonchiz komilmi?')">Berdi</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                    {% for returnBook in returnBook %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ returnBook.book_name }}</td>
+                        <td>{{ returnBook.key }}</td>
+                        <td>{{ returnBook.date }}</td>
+                        <td>{{ returnBook.created }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!--Table END-->
+        </div>
+    </div>
+</div>
+<div class="mt-4 p-2">
+
+</div>
+<script>
+    <a class="confirm-delete">Delete</a>
+    $(document).on('click', '.confirm-delete', function () {
+        return confirm('Haqiqatdan ham o'chirmoqchimisiz ? ');
+})
+</script>
+{% endblock content %}

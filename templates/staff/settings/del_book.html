@@ -1,0 +1,48 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+
+    <div class="col-12 mt-5">
+      <form method="post" class="form-inline" role="form">
+        {% csrf_token %}
+        <div class="form-group w-75">
+          <input type="text" name="search" class="form-control w-100" placeholder="Kitob nomi">
+        </div>
+        <button type="submit" class="btn btn-theme">Qidirish</button>
+      </form>
+    </div>
+<div class="col-12 mt-3">
+            <table class="table table-light table-hover">
+              <h4 class="mt-5">Mavjud kitoblar</h4>
+              <hr>
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">T/R</th>
+                  <th scope="col">Китоб номи</th>
+                  <th scope="col">Муаллифи</th>
+                  <th scope="col">Инвентар рақами</th>
+                  <th scope="col">Ўчириш</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for book in book %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ book.book_name }}</td>
+                  <td>{{ book.author }}</td>
+                  <td>{{ book.key }}</td>
+                  <td>
+                    <button class="btn btn-danger btn-xs"><a style="text-decoration:none; color:white;" href="del_book/{{ book.id }}" onclick="return confirm('Ishonchiz komilmi?')"><i class="fa fa-trash-o "></i></a></button>
+                  </td>
+                </tr>
+                <tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+<script>
+<a class="confirm-delete">Delete</a>
+    $(document).on('click', '.confirm-delete', function(){
+    return confirm('Haqiqatdan ham o'chirmoqchimisiz?');
+})
+</script>
+{% endblock content %}

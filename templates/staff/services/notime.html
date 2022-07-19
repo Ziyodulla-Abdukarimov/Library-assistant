@@ -1,0 +1,35 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+<div class="pt-5">
+<div class="container">
+        <div class="col-12 mt-3">
+            <div class="text-center p-3">
+                <b class="fs-4">Muddati tuganlar</b>
+            </div>
+            <table class="table table-light table-hover">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">T/R</th>
+                    <th scope="col">FIO</th>
+                    <th scope="col">Olgan kitobi nomi</th>
+                    <th>Olgan vaqti</th>
+                    <th>Muhlat (kun)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for accept in accept %}  
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ accept.student.admin.FIO }}</td>
+                    <td>{{ accept.book_name }}</td>
+                    <td>{{ accept.date }}</td>
+                    <td>{{ accept.respite|date:'d' }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+</div>
+<div class="mt-5 p-5">
+</div>
+{% endblock content %}

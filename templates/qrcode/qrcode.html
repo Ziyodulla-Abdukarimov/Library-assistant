@@ -1,0 +1,40 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+<div class="row mt-5">
+  <form method="post">
+    {% csrf_token %}
+    <select name="group" class="form-control" onchange="this.form.submit()">
+      <option>Guruhni tanlash</option>
+      {% for group_id in group %}
+      <option value="{{ group_id.id }}">{{ group_id.number }}</option>
+      {% endfor %}
+    </select>
+</div>
+</div>
+</form>
+</div>
+<!--Option end-->
+<!--Table start-->
+<div class="row p-3">
+  <table class="table table-stripped table-hover table-bordered col-mt-4 col-me-2 mt-4 me-2">
+    <thead>
+      <tr>
+        <th scope="col">FIO</th>
+        <th scope="col">Telefon raqam</th>
+        <th scope="col">Pasport ID</th>
+        <th>Tanlash</th>
+      </tr>
+    </thead>
+    <tbody style="text-decoration: none; font-family: Arial, Helvetica, sans-serif;">
+      {% for member in member %}
+      <tr class="table-row" style="cursor: pointer;">
+        <th scope="row">{{ member.FIO }}</th>
+        <th scope="row">{{ member.phone_number }}</th>
+        <th scope="row">{{ member.passport_id }}</th>
+        <th><a href="add/{{ member.id }}"><button class="btn btn-dark text-white">Kirish</button></a></th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-12 mt-5">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="search" class="col-9 form-control me-2 rounded" name="search" placeholder="Kitob nomini kiriting">
+                <button class="col-3 btn btn-primary rounded">Qidirish</button>
+            </div>
+        </form>
+    </div>
+<div class="col-12 mt-3">
+            <div class="text-center p-3">
+                <b class="fs-4">Mavjud Kitoblar</b>
+            </div>
+            <table class="table table-striped table-hover mt-4">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">T/R</th>
+                    <th scope="col">Kitob nomi</th>
+                    <th scope="col">Kitob raqami</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for book in book %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ book.book_name }}</td>
+                    <td>{{ book.key }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+</div>
+<div class="col-12 mt-5 p-5">
+
+</div>
+{% endblock content %}

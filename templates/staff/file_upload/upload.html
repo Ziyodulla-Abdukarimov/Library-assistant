@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.user_type == "1" %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select name="group">
+            <option value="">Guruhi</option>
+            {% for g in group %}
+            <option value="{{ g.id }}">{{ g.number }}</option>
+            {% endfor %}
+        </select>
+        <input type="file" name="file">
+        <button type="submit">Submit</button>
+    </form>
+    {% else %}
+    <h1>404 Sahifa topilmadi</h1>
+    {% endif %}
+</body>
+</html>

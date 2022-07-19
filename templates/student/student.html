@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+{% if user.user_type == "3" %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Developer: Ziyodulla Abdukarimov">
+  <meta name="author" content="Ziyodulla">
+  <meta name="keyword" content="Ubtuit-library.uz library ubtuit Ziyodulla">
+  <title>Library Assistant</title>
+
+  <!-- Favicons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="{% static 'staff/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'staff/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'staff/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!--external css-->
+  <link href="{% static 'staff/lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static 'staff/css/zabuto_calendar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'staff/lib/gritter/css/jquery.gritter.css' %}" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'staff/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'staff/css/style-responsive.css' %}" rel="stylesheet">
+  <script src="{% static 'staff/lib/chart-master/Chart.js' %}"></script>
+
+</head>
+
+<body style="background-color: #E2E8F0;">
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Yon menu"></div>
+      </div>
+      <!--logo start-->
+      <a href="{% url 'student_profile' %}" class="logo"><b>Library <span>Assistant</span></b></a>
+      <!--logo end-->
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="{% url 'logout' %}">Chiqish</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="{% url 'student_profile' %}"><img src="{% static '149071.png' %}" class="img-circle" width="80"></a></p>
+          <h5 class="centered" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{ request.user.student.FIO }}</h5>
+          <li>
+            <a href="{% url 'student_profile' %}">
+              <i class="fa fa-user"></i>
+              <span>Profil</span>
+              </a>
+          </li>
+          <li>
+            <a href="{% url 'reading_book' %}">
+              <i class="fa fa-users"></i>
+              <span>O'qiyotgan kitoblarim</span>
+              </a>
+          </li>
+          <li>
+            <a href="{% url 'read_book' %}">
+              <i class="fa fa-users"></i>
+              <span>O'qigan kitoblarim</span>
+              </a>
+          </li>
+          <li>
+            <a href="{% url 'news' %}">
+                <i class="fa fa-globe"></i>
+              <span>Yangiliklar</span>
+              </a>
+          </li>
+          <li>
+            <a href="{% url 'all_book' %}">
+              <i class="fa fa-book"></i>
+              <span>Mavjud kitoblar</span>
+              </a>
+          </li>
+          <li>
+            <a href="{% url 'contacta' %}">
+              <i class="fa fa-check"></i>
+              <span>Dastur haqida</span>
+              </a>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+
+    <section id="main-content">
+      <section class="wrapper">
+        {% block content %}
+        <!-- /row -->
+        {% endblock content %}
+      </section>
+    </section>
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>Sirius</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+          <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+          Created<a href="https://t.me/ZiyodullaAbdukarimov"> Ziyodulla Abdukarimov</a>
+        </div>
+        <a href="index.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="{% static 'staff/lib/jquery/jquery.min.js' %}"></script>
+
+  <script src="{% static 'staff/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script class="include" type="text/javascript" src="{% static 'staff/lib/jquery.dcjqaccordion.2.7.js' %}"></script>
+  <script src="{% static 'staff/lib/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'staff/lib/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <script src="{% static 'staff/lib/jquery.sparkline.js' %}"></script>
+  <!--common script for all pages-->
+  <script src="{% static 'staff/lib/common-scripts.js' %}"></script>
+  <script type="text/javascript" src="{% static 'staff/lib/gritter/js/jquery.gritter.js' %}"></script>
+  <script type="text/javascript" src="{% static 'staff/lib/gritter-conf.js' %}"></script>
+  <!--script for this page-->
+  <script src="{% static 'staff/lib/sparkline-chart.js' %}"></script>
+  <script src="{% static 'staff/lib/zabuto_calendar.js' %}"></script>
+
+</body>
+{% else %}
+<h1>Tizimga kirmagansiz</h1>
+<a href="{% url 'login' %}">Tizimga kirish uchun bu yerga bosing</a>
+{% endif %}
+</html>

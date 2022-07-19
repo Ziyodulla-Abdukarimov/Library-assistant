@@ -1,0 +1,46 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+      <div class="col-12 mt-5">
+              <div class="col-12">
+                  <table class="table table-light table-hover">
+                    <h4>Xodimlar ro'yhati</h4>
+                    <hr>
+                    <thead>
+                      <tr>
+                        <th scope="col">T/R</th>
+                        <th scope="col">Familyasi</th>
+                        <th scope="col">Ismi</th>
+                        <th scope="col">Telefon raqami</th>
+                        <th scope="col">Xodim ID</th>
+                        <th scope="col">Tanlash</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for student in employee %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ student.admin.first_name }}</td>
+                        <td>{{ student.admin.last_name }}</td>
+                        <td>{{ student.address }}</td>
+                        <td>{{ student.admin.username }}</td>
+                        <td>
+                            <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                          </td>
+                      </tr>
+                      <tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /content-panel -->
+          </div>
+  </div>
+</div>
+<div class="p-5">
+
+</div>
+{% endblock content %}

@@ -1,0 +1,64 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+    <div class="text-center mt-5">
+        <b class="fs-4">Talaba qo'shish</b>
+    </div>
+        <form method="post" class="row mt-4">
+          {% csrf_token %}
+            <div class="col-8">
+                <input name="FIO"  type="text" class="form-control rounded" placeholder="FIO">
+            </div>
+            <div class="col-4">
+                <input name="username" type="text" class="col-4 form-control rounded" placeholder="username">
+            </div>
+            <div class="col-4 mt-3">
+                <input name="password" type="text" class="col-4 form-control rounded" placeholder="Parol">
+            </div>
+            <div class="col-4 m-auto mt-3">
+                <input name="password_ID" type="text" class="form-control rounded" placeholder="Pasport ID">
+            </div>
+            <div class="col-4 mt-3">
+                <select name="group" class="form-control rounded" aria-label="Default select example">
+                    <option>Guruh nomeri</option>
+                  {% for group_id in group_id %}
+                  <option value="{{ group_id.id }}">{{ group_id.number }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            <div class="col-4 mt-3">
+                <input name="phone_number" type="text" class="form-control rounded" placeholder="Telefon raqami">
+            </div>
+            <div class="col-4 mt-3">
+                <button type="submit" class="btn w-100 btn-primary rounded">Qo'shish</button>
+            </div>
+        </form>
+            {% for messages in messages %}
+            <div class="alert alert-danger mt-2" role="alert">
+                    {{ messages }}
+            </div>
+            {% endfor %}
+    <div class="row p-3">
+        <table class="table table-light table-hover">
+            <thead class="table-dark border border-dark border-1">
+              <tr>
+                <th scope="col">T/R</th>
+                <th scope="col">FIO</th>
+                <th scope="col">Guruh nomeri</th>
+                <th scope="col">Pasport ID</th>
+                <th scope="col">Telefon raqami</th>
+              </tr>
+            </thead>
+            <tbody class="border border-1">
+            {% for student in student %}
+              <tr>
+                <th scope="col">{{ forloop.counter }}</th>
+                <th scope="col">{{ student.student.FIO }}</th>
+                <th scope="col">{{ student.student.groups }}</th>
+                <th scope="col">{{ student.student.passport_id }}</th>
+                <th scope="col">{{ student.student.phone_number }}</th>
+              </tr>
+            {% endfor %}
+          </table>
+    </div>
+<div class="col-12 mt-5 p-4"></div>
+{% endblock content %}

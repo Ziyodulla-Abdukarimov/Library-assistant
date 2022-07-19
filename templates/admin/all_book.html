@@ -1,0 +1,49 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="form">
+        <form method="post" class="form-inline mt-5" role="form">
+          {% csrf_token %}
+          <div class="form-group w-75">
+            <input type="text" name="search" class="form-control w-100" placeholder="kitob nomi">
+          </div>
+          <button type="submit" class="btn btn-theme">Qidirish</button>
+        </form>
+      </div>
+    </div>
+      <div class="col-12 mt-5">
+              <div class="col-12">
+                  <table class="table table-light table-hover">
+                    <h4>Mavjud kitoblar</h4>
+                    <hr>
+                    <thead>
+                      <tr>
+                        <th scope="col">T/R</th>
+                        <th scope="col">Китоб номи</th>
+                        <th scope="col">Муаллифи</th>
+                        <th scope="col">Инвентар рақами</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for book in book %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td class="hidden-phone">{{ book.book_name }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.key }}</td>
+                      </tr>
+                      <tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /content-panel -->
+          </div>
+  </div>
+</div>
+<div class="p-5">
+
+</div>
+{% endblock content %}

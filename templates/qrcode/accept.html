@@ -1,0 +1,14 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row m-5">
+        <div class="col-12">
+            {% for messages in messages %}
+            <h1 class="text-center m-5">{{ messages }}</h1>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

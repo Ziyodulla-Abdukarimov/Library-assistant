@@ -1,0 +1,37 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+<div class="pt-5">
+<div class="container">
+        <div class="col-12 mt-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+            <div class="text-center p-3">
+                <b class="fs-4">Hozirda o'qiyotganlar</b>
+            </div>
+            <table class="table table-light table-hover" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">T/R</th>
+                    <th scope="col">FIO</th>
+                    <th scope="col">Guruhi</th>
+                    <th scope="col">Olgan kitobi nomi</th>
+                    <th>Olgan vaqti</th>
+                    <th>Muhlat (kun)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for accept in reading %}  
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ accept.student.FIO }}</td>
+                    <td>{{ accept.student.groups }}</td>
+                    <td>{{ accept.book_name }}</td>
+                    <td>{{ accept.date }}</td>
+                    <td>{{ accept.respite|date:'d' }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+</div>
+<div class="mt-5 p-5">
+</div>
+{% endblock content %}

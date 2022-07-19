@@ -1,0 +1,53 @@
+{% extends 'staff/staff.html' %}
+{% block content %}
+
+    <div class="row mt-4 text-center">
+        <b class="fs-4">Talabani O'chirish</b>
+    </div>
+    <div class="row p-5">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <select name="group" class="form-control rounded" onchange="this.form.submit()">
+                    <option>Guruh no'meri</option>
+                    {% for group in group %}
+                    <option value="{{ group.id }}">{{ group.number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="row p-5">
+      <table class="table table-light table-hover">
+            <thead>
+              <tr>
+                <th scope="col">T/R</th>
+                <th scope="col">FIO</th>
+                <th scope="col">Guruh nomeri</th>
+                <th scope="col">Pasport ID</th>
+                <th scope="col">Telefon raqami</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for students in student %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ students.FIO }}</td>
+                <td>{{ students.groups }}</td>
+                <td>{{ students.passport_id }}</td>
+                <td>{{ students.phone_number }}</td>
+                <td><button type="submit" class="btn btn-danger float-end"><a style="text-decoration:none; color:white;" href="del_student/{{ students.id }}" onclick="return confirm('Ishonchiz komilmi?')"><i class="fa fa-trash-o "></i></a></button></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+<div class="col-12 mt-5 p-4"></div>
+<script>
+<a class="confirm-delete">Delete</a>
+    $(document).on('click', '.confirm-delete', function(){
+      return confirm('Haqiqatdan ham o'chirmoqchimisiz?');
+  })
+</script>
+{% endblock content %}
